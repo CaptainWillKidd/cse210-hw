@@ -1,9 +1,22 @@
 using System;
 
-class Program
+using System.Collections.Generic;
+
+Console.WriteLine("Enter a list of numbers, type 0 when finished.");
+List<int> numbers = new List<int>();
+int number = 1;
+while (number != 0)
 {
-    static void Main(string[] args)
+    Console.Write("Enter a number: ");
+    number = int.Parse(Console.ReadLine());
+    numbers.Add(number);
+
+    if (number == 0)
     {
-        Console.WriteLine("Hello World! This is the Exercise4 Project.");
+        numbers.Remove(0);
     }
+
 }
+Console.WriteLine("The sum of the numbers is: " + numbers.Sum());
+Console.WriteLine("The average of the numbers is: " + numbers.Average());
+Console.WriteLine("The largest number is: " + numbers.Max());
