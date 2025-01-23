@@ -13,18 +13,31 @@ public class Scripture{
 
     public void HideRandomWords(int count){
         Random random = new Random();
-        for(int i = 0; i < count; i++){
+        int hiddenCount = 0;
+        while (hiddenCount < count)
+        {
             int index = random.Next(_words.Count);
-            _words[index].Hide();
+            if (!_words[index].IsHidden())
+            {
+                _words[index].Hide();
+                hiddenCount++;
+            }
+
+            if (IsCompletelyHidden())
+            {
+                break;
+            }
         }
     }
 
-    public string GetDisplayText(){
+     public string GetDisplayText()
+    {
         string result = "";
-        foreach(Word word in _words){
+        foreach (Word word in _words)
+        {
             result += word.GetDisplayText() + " ";
         }
-        return result;
+        return result.Trim();
     }
 
     public bool IsCompletelyHidden(){
@@ -34,5 +47,9 @@ public class Scripture{
             }
         }
         return true;
+    }
+
+    public Reference GetReference(){
+        return _reference;
     }
 } 
