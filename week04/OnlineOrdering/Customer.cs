@@ -17,7 +17,7 @@ public class Customer{
         return _name;
     }
 
-    public Address GetAddress(){
-        return _address;
+    public string GetAddress(){
+        return _address.DisplayAddress();
     }
 }
