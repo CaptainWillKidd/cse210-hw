@@ -9,6 +9,11 @@ public class Order{
         _products = new List<Product>();
     }
 
+    public void AddProduct(Product product)
+    {
+        _products.Add(product);
+    }
+
     public double TotalPrice(){
     double total = 0;
     foreach (var product in _products)
@@ -30,12 +35,12 @@ public class Order{
 
     public string GetPackingLabel()
     {
-        StringBuilder packingLabel = new StringBuilder();
-        foreach (var product in _products)
+        string label = "Packing Label:\n";
+        foreach (Product product in _products)
         {
-            packingLabel.AppendLine($"Name: {product.GetName()}, Product ID: {product.GetId()}");
+            label += $"{product.GetName()} (ID: {product.GetId()})\n";
         }
-        return packingLabel.ToString();
+        return label;
     }
 
     public string GetShippingLabel()
